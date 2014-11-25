@@ -1,16 +1,16 @@
 ##overlap
 
-overlap is a program that identifies overlaps between long reads that can be used for their assembly (using the software Lola, see 
-separate repository) or for other purposes. Program input consists of a blast file with the input sequences aligned. overlap will use hits in the blast file as 
-seeds and will try to elongate them using version of the Smith-Waterman algorithm specifically designed to identify end-end and containment overlaps. The 
-following example contains the output of an overlap so you can try this for yourself.
+overlap is a program that identifies overlaps between long reads that can be used for the assembly of the reads (using the software Lola, see 
+separate repository) or for other purposes. Program input consists of a blast file with the input sequences aligned. The program will use hits in the blast file as 
+seeds and will try to elongate them using different versions of the Smith-Waterman algorithm specifically designed to identify end-end and containment 
+overlaps. 
 
 ### Running overlap
 
 In order to run overlap you need to
 
-1. Run blast on the sequences. You should use the -m 8 option. We recommend that you also use -F F -r 1 -q -5 -e 1e-30. The -e parameter will prevent blast from inflating the output directory. 
-2. Running overlap
+1. Run blast on the sequences. You should use the -m 8 option. We recommend that you also use -F F -r 1 -q -5 -e 1e-30. The -e parameter will prevent blast from inflating the output file. 
+2. Run overlap
 
 For running overlap use the following command:
 
@@ -40,26 +40,28 @@ Where
 ```
 
 ### overlap output
-Output is written to a file named **\<seq-file-without-postfix\>.overlap.txt** and contains a report file for all overlaps detected. File consists of line with 
+Output is written to a file named **\<seq-file-without-postfix\>.overlap.txt** and contains a report for all overlaps detected. File consists of line with 
 two types of format:
 
 ```
-\<TYPE1\>	\<seq1\>	\<side1\>	\<seq2\>	\<side2\>	\<start1\>	\<end1\>	\<start2\>	\<end2\>	\<size1\>	\<size2\>	\<% identity\>
+<TYPE1>	<seq1>	<side1>	<seq2>	<side2>	<start1>	<end1>	<start2>	<end2>	<size1>	<size2>	<% identity>
 ```
 where
-* TYPE1 can be either CONNECTED (the two sequence have an end to end overlap) or SHARED (at least one of the sequences has a non-end region overlapping with the other sequence)
-* side1 and side2 can be either 3 or 5 (for CONNECT) or also Middle (for SHARED)
+* TYPE1 can be either CONNECTED (the two sequence have an end to end overlap) or SHARED (at least one of the sequences has a non-end region overlapping with 
+the other sequence or the two ends overlap in a way that does not enable their assembly)
+* side1 and side2 can be either 3 or 5 (for CONNECTED) or also Middle (for SHARED)
 * start1 and end1 are start and end coordinates of the overlapping region for seq1
 * start2 and end2 are coordinates for overlapping region of seq2. start2 can be smaller than end2 if reverse complement of seq2 is aligned
 * size1 and size2 are the lengths of seq1 and seq2, repectively
 * % identity is % identity for the alignment
 
+The second format is
 ```
-\<TYPE2\>	\<seq1\>	\<seq2\>	\<start1\>	\<end1\>	\<start2\>	\<end2\>	\<size1\>	\<size2\>	\<% identity\>
+<TYPE2>	<seq1>	<seq2>	<start1>	<end1>	<start2>	<end2>	<size1>	<size2>	<% identity>
 ```
 
 where
-* TYPE2 can be either IDENTICAL (the two sequences align throughout their whole length except maybe for a few bps at >= % identity) or CONTAINS (seq1 contains seq2)
+* TYPE2 can be either IDENTICAL (the two sequences align throughout their whole length except maybe for a few bps) or CONTAINS (seq1 contains seq2)
 * Other fields are the same as above
 
 ### example
