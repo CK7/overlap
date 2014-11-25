@@ -15,7 +15,7 @@ In order to run overlap you need to
 For running overlap use the following command:
 
 ```
-$ <path-to-Lola-directory>/overlap
+$ <path-to-overlap-directory>/code/overlap
 ```
 
 You can get a description of the parameters taken by overlap by running this command without parameters:
@@ -23,7 +23,7 @@ You can get a description of the parameters taken by overlap by running this com
 ```
 $ ./overlap
 
-./overlap v1.01
+./overlap v1.02
 
 Usage: overlap [-os <min-overlap-size>] [-G <gap-penalty>] [-r <match-reward>] [-d <seed-dize>]
                [-q <mismatch-penalty>] [-p <% identity>] <seq-file> <m8-blast-file>
@@ -68,3 +68,20 @@ where
 
 Refer to the directory example in the Lola repository for an example of running overlap. File example/RBG-1.reads.overlap.txt is the output of running 
 overlap on the file RBG-1.reads.fna. See example/run for command line used to generate this file. 
+
+### How to cite
+Comming soon
+
+### License
+Copyright (C) 2014 Itai Sharon
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN THE SOFTWARE.
