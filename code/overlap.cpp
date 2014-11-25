@@ -15,7 +15,7 @@
 
 using namespace std;
 
-double VERSION = 1.01;
+double VERSION = 1.02;
 
 namespace Bio {
 	typedef Alignment<Bio::DNAString> DNA_Alignment;
